@@ -9,12 +9,17 @@
 </head>
 <body>
 <header>
-    <h1><a href="/">Matt Boisseau</a></h1>
-    <h2>Welcome to my site. Give me a job.</h2>
-    <nav>{{ collections.all | eleventyNavigation | eleventyNavigationToHtml }}</nav>
+    <nav>
+        <h1><a href="/">Matt Boisseau</a></h1>
+        <h2>Welcome to my site. Give me a job.</h2>
+        {{ collections.all | eleventyNavigation | eleventyNavigationToHtml }}
+    </nav>
 </header>
 <main>
-    <article>{{ content }}</article>
+    <div id="hero"><img src="{{ heroImage }}"/></div>
+    <div id="content">
+        <article>{{ content }}</article>
+    </div>
 </main>
 </body>
 </html>

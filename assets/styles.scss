@@ -2,9 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap');
 
-$headerColor: lightgray;
 $bodyColor: white;
-$accentColor: salmon;
+$accentColor: skyblue;
+$headerColor: mix(white, $accentColor, 85);
 $textColor: black;
 $titleMinRem: 3rem;
 $titleMaxRem: 4rem;
@@ -36,52 +36,56 @@ body {
 		padding: 3rem 2rem;
 	}
 
-	header {
+	header {		
 		flex-basis: 150px;
 		flex-shrink: 0;
 		flex-grow: 0;
 		background: $headerColor;
 
-		h1 {
-			display: block;
-			transform: rotate(-8deg);
-			width: 0;
-			margin: 0 0 3rem -0.5rem;
-			line-height: 80%;
-			
-			$fontSize: clamp(#{$titleMinRem}, #{$titleScaleVw}, #{$titleMaxRem});
-			font-size: $fontSize;
+		nav {
+			position: sticky;
+			top: 2rem;
+			z-index: 9999;
 
-			$shadowValue: ();
-			$numShadows: 3;
-			@for $i from 1 through $numShadows {
-				$shadowValue: append(
-								$shadowValue, 
-								calc(#{$i} * clamp(#{$titleMinRem}, #{$titleScaleVw}, #{$titleMaxRem}) / 10) calc(#{$i} * clamp(#{$titleMinRem}, #{$titleScaleVw}, #{$titleMaxRem}) / 10) mix($bodyColor, $accentColor, math.div($i, $numShadows) * 100),
-								comma
-				);
+			h1 {
+				display: block;
+				transform: rotate(-8deg);
+				width: 0;
+				margin: 0 0 3rem -0.5rem;
+				line-height: 80%;
+
+				$fontSize: clamp(#{$titleMinRem}, #{$titleScaleVw}, #{$titleMaxRem});
+				font-size: $fontSize;
+
+				$shadowValue: ();
+				$numShadows: 3;
+				@for $i from 1 through $numShadows {
+					$shadowValue: append(
+									$shadowValue,
+									calc(#{$i} * clamp(#{$titleMinRem}, #{$titleScaleVw}, #{$titleMaxRem}) / 10) calc(#{$i} * clamp(#{$titleMinRem}, #{$titleScaleVw}, #{$titleMaxRem}) / 10) mix($bodyColor, $accentColor, math.div($i, $numShadows) * 100),
+									comma
+					);
+				}
+				text-shadow: $shadowValue;
+
+				a {
+					text-decoration: none;
+				}
 			}
-			text-shadow: $shadowValue;
+
+			h2 {
+				display: block;
+				font-size: 1rem;
+				margin-bottom: 1rem;
+			}
 
 			a {
-				text-decoration: none;
+				color: $textColor;
+				&:hover {
+					color: $accentColor;
+				}
 			}
-		}
-
-		h2 {
-			display: block;
-			font-size: 1rem;
-			margin-bottom: 1rem;
-		}
-
-		a {
-			color: $textColor;
-			&:hover {
-				color: $accentColor;
-			}
-		}
-
-		nav {
+			
 			ul {
 				list-style: none;
 				padding: 0;
@@ -89,18 +93,35 @@ body {
 				ul {
 					padding-left: 1rem;
 				}
-			}
-			
-			a {
-				text-decoration: none;
-				&::before {
-					content: "⏵";
+
+				a {
+					text-decoration: none;
+					&::before {
+						content: "⏵";
+					}
 				}
 			}
 		}
 	}
 
-	main {
+	main{
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		flex-grow: 1;
+		
+		#hero {
+			height: 20rem;
+			background: $accentColor;
+			border-radius: 0 0 2rem 2rem;
+			overflow: hidden;
+			
+			img {
+				width: 100%;
+				mix-blend-mode: overlay;
+			}
+		}
+	#content {
 		display: flex;
 		flex-grow: 1;
 		justify-content: space-around;
@@ -108,5 +129,5 @@ body {
 		article {
 			flex-basis: 500px;
 		}
-	}
+	}}
 }
