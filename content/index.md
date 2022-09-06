@@ -1,6 +1,6 @@
 ---
 layout: layout.html
-title: 11ty Test
+title: Home Page Title
 description: This is my test description.
 heroImage: '/assets/tokyobg.jpg'
 eleventyNavigation:
