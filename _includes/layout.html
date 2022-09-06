@@ -9,6 +9,7 @@
   </head>
   <body>
     <h1>Matt Boisseau</h1>
+    <nav>{{ collections.all | eleventyNavigation | eleventyNavigationToHtml }}</nav>
     <div id="content">{{ content }}</div>
   </body>
 </html>

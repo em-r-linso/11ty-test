@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "eleventy-sass": "^2.1.2"
+  },
+  "devDependencies": {
+    "@11ty/eleventy-navigation": "^0.3.5"
   }
 }
