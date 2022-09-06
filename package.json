@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "eleventy-sass": "^2.1.2"
+  }
+}

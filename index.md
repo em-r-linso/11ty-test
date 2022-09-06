@@ -4,4 +4,6 @@ title: 11ty Test
 description: This is my test description.
 ---
 
-This is my test body.
+# Index
+
+This is the site's landing page.

@@ -1,7 +1,11 @@
-module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("./assets")
+const eleventySass = require("eleventy-sass");
 
-  return {
-    passthroughFileCopy: true,
-  }
+module.exports = function (eleventyConfig) {
+
+	eleventyConfig.addPlugin(eleventySass);
+	eleventyConfig.addPassthroughCopy("./assets")
+
+	return {
+		passthroughFileCopy: true,
+	}
 }
