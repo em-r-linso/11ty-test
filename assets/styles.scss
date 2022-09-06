@@ -1,11 +1,112 @@
-h1 {
-    font-size: 2rem;
-}
+@use 'sass:math';
 
-#content h1 {
-    font-size: 1rem;
-}
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap');
 
-#content p {
-    font-size: 0.5rem;
+$headerColor: lightgray;
+$bodyColor: white;
+$accentColor: salmon;
+$textColor: black;
+$titleMinRem: 3rem;
+$titleMaxRem: 4rem;
+$titleScaleVw: 5.8vw;
+
+body {
+
+	display: flex;
+	align-items: stretch;
+	min-height: 100vh;
+	margin: 0;
+	font-family: 'IBM Plex Sans', sans-serif;
+
+	h1, h2, h3, h4, h5, h6 {
+		line-height: 100%;
+		font-weight: bold;
+
+		&:not(:first-child) {
+			margin: 2rem 0 0 0;
+		}
+	}
+
+	p {
+		margin: 1rem 0 0 0;
+		line-height: 150%;
+	}
+
+	header, article {
+		padding: 3rem 2rem;
+	}
+
+	header {
+		flex-basis: 150px;
+		flex-shrink: 0;
+		flex-grow: 0;
+		background: $headerColor;
+
+		h1 {
+			display: block;
+			transform: rotate(-8deg);
+			width: 0;
+			margin: 0 0 3rem -0.5rem;
+			line-height: 80%;
+			
+			$fontSize: clamp(#{$titleMinRem}, #{$titleScaleVw}, #{$titleMaxRem});
+			font-size: $fontSize;
+
+			$shadowValue: ();
+			$numShadows: 3;
+			@for $i from 1 through $numShadows {
+				$shadowValue: append(
+								$shadowValue, 
+								calc(#{$i} * clamp(#{$titleMinRem}, #{$titleScaleVw}, #{$titleMaxRem}) / 10) calc(#{$i} * clamp(#{$titleMinRem}, #{$titleScaleVw}, #{$titleMaxRem}) / 10) mix($bodyColor, $accentColor, math.div($i, $numShadows) * 100),
+								comma
+				);
+			}
+			text-shadow: $shadowValue;
+
+			a {
+				text-decoration: none;
+			}
+		}
+
+		h2 {
+			display: block;
+			font-size: 1rem;
+			margin-bottom: 1rem;
+		}
+
+		a {
+			color: $textColor;
+			&:hover {
+				color: $accentColor;
+			}
+		}
+
+		nav {
+			ul {
+				list-style: none;
+				padding: 0;
+
+				ul {
+					padding-left: 1rem;
+				}
+			}
+			
+			a {
+				text-decoration: none;
+				&::before {
+					content: "⏵";
+				}
+			}
+		}
+	}
+
+	main {
+		display: flex;
+		flex-grow: 1;
+		justify-content: space-around;
+
+		article {
+			flex-basis: 500px;
+		}
+	}
 }
