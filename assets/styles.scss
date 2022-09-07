@@ -45,7 +45,7 @@ body {
 
 		nav {
 			position: sticky;
-			top: 2rem;
+			top: 3rem;
 			z-index: 9999;
 
 			h1 {
@@ -114,10 +114,7 @@ body {
 		align-items: stretch;
 		flex-grow: 1;
 		
-		#hero {
-			position: sticky;
-			top: -13rem;
-			
+		#hero {			
 			height: 20rem;
 			background: linear-gradient(180deg, $secondaryColor 42%, mix($secondaryColor, white, 25) 76%, mix($secondaryColor, white, 25) 90%, $secondaryColor 120%);
 			border-radius: 0 0 2rem 2rem;
